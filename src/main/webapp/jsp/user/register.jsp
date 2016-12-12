@@ -62,7 +62,7 @@
 				<li class="you_zi">邮箱：</li>
 				<li style="position:relative;">
 					<input id="user_name" name="user_name" type="text" class="you_input input-s" style="display:inline-block">
-					<span  class="yaxin-mail">@asiainfo.com</span>
+					<!-- <span  class="yaxin-mail">@asiainfo.com</span> -->
 				</li>
 				<label for="user_name"></label>
 			</ul>
@@ -128,7 +128,7 @@
 							dataType : "json", //接受数据格式   
 							data : { //要传递的数据
 								email : function() {
-									return $.trim( $("#user_name").val()+"@asiainfo.com" );
+									return $.trim( $("#user_name").val());
 								}
 							}
 						}
@@ -158,7 +158,7 @@
 			
 					var _this = this;
 					$(_this).addClass("disabled");
-					var user_name = $.trim($("#user_name").val()+"@asiainfo.com");
+					var user_name = $.trim($("#user_name").val());
 					//alert(00+user_name);
 					var user_password = $.trim($("#user_password").val());
 					var user_password_rep = $.trim($("#user_password_rep").val());

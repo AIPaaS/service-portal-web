@@ -13,4 +13,19 @@ if [ -n "$LOG_LEVEL" ]; then
     sed -i "s/<Root level=.*/<Root level=\"${LOG_LEVEL}\">/g" /opt/apache-tomcat-8.0.35/webapps/service-portal-web/WEB-INF/classes/log4j2.xml   
 fi
 
-nohup /opt/apache-tomcat-8.0.35/bin/catalina.sh run
+userStr='userAccessList="{\"accessUsers\":['
+pf='{\"userEmail\":\"'
+sf='\"},'
+endStr=']}";'
+
+if [ -n "$AccessUsers" ]; then
+  arr=(${AccessUsers//,/ })
+  for i in ${arr[@]}
+    do
+      userStr="${userStr}${pf}${i}${sf}"
+    done
+   userStr="${userStr}${endStr}"
+   sed -i "s/userAccessList = .*/${userStr}/g" /opt/apache-tomcat-8.0.35/webapps/service-portal-web/WEB-INF/classes/common/userAccess.properties
+fi
+
+nohup /opt/apache-tomcat-8.0.35/bin/catalina.sh run >> /service-portal-web.log

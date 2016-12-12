@@ -32,8 +32,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						<ul class="dia_input input-s">
 							<li><img src="${_base }/resources/images/login_a.png"></li>
 							<li style="position:relative">
-								<input id="userName" name="userName" type="text" class="yon_input" placeholder="请输入邮箱前缀"/>
-								<span style="font-size:15px;line-height:35px;margin-left:3px;">@asiainfo.com</span>
+								<input id="userName" name="userName" type="text" class="yon_input" placeholder="请输入邮箱"/>
+								<!--<span style="font-size:15px;line-height:35px;margin-left:3px;">@asiainfo.com</span>  -->
 							</li>
 							<label id="passWordInvlid"></label>
 						</ul>
@@ -102,8 +102,8 @@ $(document).ready(function(){
 		emailCheck();
 	});
 	function emailCheck(){
-		var userName =$.trim($("#userName").val()+"@asiainfo.com");
-		if(userName != null && userName.indexOf('@asiainfo.com')==0){
+		var userName =$.trim($("#userName").val());
+		if(userName == null || userName==""){
 			//alert("indexOf")
 			$("#loginInvlid").text("邮箱不能为空").addClass("error");
 			$("#loginInvlid").removeClass("hidden");
@@ -126,7 +126,7 @@ $(document).ready(function(){
 		
 	});
 	function login(){
-		var userName =$.trim($("#userName").val()+"@asiainfo.com");
+		var userName =$.trim($("#userName").val());
 		var passWord = $.trim($("#passWord").val());
 		var image =$.trim($("#image").val());
 		if (loginF.valid()) {
