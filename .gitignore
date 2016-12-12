@@ -5,3 +5,4 @@ target
 .settings/
 reports/
 .log
+.volocity.log
